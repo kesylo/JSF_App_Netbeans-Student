@@ -6,8 +6,8 @@ import java.sql.Date;
 
 public class Utilisateur {
     
-    private String matricule, nom, prenom, email,rue, localite, compte, mot_de_passe, url_photo;
-    private int id_personne, id_role,numero_telephone, numero_rue, code_postal;
+    private String matricule, nom, prenom, email, rue, localite, compte, mot_de_passe, url_photo;
+    private int id_personne, id_role, numero_telephone, numero_rue, code_postal;
     private Date date_naissance;
     private boolean est_masculin;
 
