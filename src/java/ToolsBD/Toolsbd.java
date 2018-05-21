@@ -5,11 +5,7 @@
  */
 package ToolsBD;
 
-import beanPackage.Client;
-import beanPackage.LigneReservation;
-import beanPackage.Porter;
-import beanPackage.Reservation;
-import beanPackage.Voiture;
+import beanPackage.*:
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,10 +16,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author CHEUKINHO
- */
+
 public class Toolsbd {
 
     public static boolean verifyLogin(Connection con, String login, String password) {
