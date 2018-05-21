@@ -5,7 +5,7 @@
  */
 package ToolsBD;
 
-import beanPackage.*:
+import beanPackage.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +18,186 @@ import java.util.logging.Logger;
 
 
 public class Toolsbd {
+    
+    
+    public static void updateUtilisateur(Connection con, Utilisateur obj) {
+        
+        try {
+            
+            PreparedStatement prep = con.prepareStatement(
+                                        "UPDATE UTILISATEUR " + 
+                                        "SET " + 
+                                        "MATRICULE=" + parameter(obj.getMatricule()) + "," + 
+                                        "NOM=" + parameter(obj.getNom()) + "," + 
+                                        "PRENOM=" + parameter(obj.getPrenom()) + "," +
+                                        "EMAIL=" + parameter(obj.getEmail()) + "," + 
+                                        "RUE=" + parameter(obj.getRue()) + "," +
+                                        "LOCALITE=" + parameter(obj.getLocalite()) + "," + 
+                                        "COMPTE=" + parameter(obj.getNom()) + "," +
+                                        "MOT_DE_PASSE=" + parameter(obj.getMot_de_passe()) + "," + 
+                                        "URL_PHOTO=" + parameter(obj.getUrl_photo()) + "," + 
+                                        "NUMERO_TELEPHONE=" + parameter(obj.getNumero_telephone()) + "," +
+                                        "NUMERO_RUE=" + parameter(obj.getNumero_rue()) + "," + 
+                                        "CODE_POSTAL=" + parameter(obj.getCode_postal()) + "," +
+                                        "DATE_NAISSANCE=" + parameter(obj.getDate_naissance()) + "," + 
+                                        "EST_MASCULIN=" + parameter(obj.isEst_masculin()) + "," +
+                                        "WHERE ID_PERSONNE=" + parameter(obj.getId_personne())+
+                                        "AND ID_ROLE=" + parameter(obj.getId_role()));
+            
+            prep.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
+    public static void updateRole(Connection con, Role obj) {
+        
+        try {
+            
+            PreparedStatement prep = con.prepareStatement(
+                                        "UPDATE ROLE " + 
+                                        "SET " + 
+                                        "CODE=" + parameter(obj.getCode()) + "," + 
+                                        "INTITULE=" + parameter(obj.getIntitule()) + "," + 
+                                        "WHERE ID_ROLE=" + parameter(obj.getId_role()));
+            
+            prep.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void updateMenu(Connection con, Menu obj) {
+        
+        try {
+            
+            PreparedStatement prep = con.prepareStatement(
+                                        "UPDATE MENU " + 
+                                        "SET " + 
+                                        "CODE=" + parameter(obj.getCode()) + "," + 
+                                        "LIBELLE=" + parameter(obj.getLibelle()) + "," + 
+                                        "WHERE ID_MENU=" + parameter(obj.getId_menu()));
+            
+            prep.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void updateAutorisation(Connection con, Autorisation obj) {
+        
+        try {
+            
+            PreparedStatement prep = con.prepareStatement(
+                                        "UPDATE AUTORISATION " + 
+                                        "SET " + 
+                                        "AJOUTER=" + parameter(obj.isAjouter()) + "," +
+                                        "MODIFIER=" + parameter(obj.isModifier()) + "," +
+                                        "SUPPRIMER=" + parameter(obj.isSupprimer()) + "," +
+                                        "WHERE ID_ROLE=" + parameter(obj.getId_role()) +
+                                        "AND ID_MENU=" + parameter(obj.getId_menu()));
+            
+            prep.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void storeMenu(Connection con, Menu obj) {
+        
+        try {
+            
+            PreparedStatement prep
+                    = con.prepareStatement(
+                                        "INSERT INTO MENU " + 
+                                        "CODE=" + parameter(obj.getCode()) + "," + 
+                                        "LIBELLE=" + parameter(obj.getLibelle()) + "," + 
+                                        "WHERE ID_MENU=" + parameter(obj.getId_menu()));
+            
+            prep.execute();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void storeRole(Connection con, Role obj) {
+        
+        try {
+            
+            PreparedStatement prep
+                    = con.prepareStatement(
+                                        "INSERT INTO ROLE " + 
+                                        "CODE=" + parameter(obj.getCode()) + "," + 
+                                        "INTITULE=" + parameter(obj.getIntitule()) + "," + 
+                                        "WHERE ID_ROLE=" + parameter(obj.getId_role()));
+            
+            prep.execute();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    public static void storeAutorisation (Connection con, Autorisation obj) {
+        
+        try {
+            
+            PreparedStatement prep
+                    = con.prepareStatement(
+                                        "INSERT INTO AUTORISATION " + 
+                                        "AJOUTER=" + parameter(obj.isAjouter()) + "," + 
+                                        "MODIFIER=" + parameter(obj.isModifier()) + "," + 
+                                        "SUPPRIMER=" + parameter(obj.isSupprimer()) + "," + 
+                                        "WHERE ID_ROLE=" + parameter(obj.getId_role()) +
+                                        "AND ID_MENU=" + parameter(obj.getId_menu()));
+            
+            prep.execute();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public static void storeUtilisateur (Connection con, Utilisateur obj) {
+        
+        try {
+            
+            PreparedStatement prep
+                    = con.prepareStatement(
+                                        "INSERT INTO UTILISATEUR " + 
+                                        "MATRICULE=" + parameter(obj.getMatricule()) + "," + 
+                                        "NOM=" + parameter(obj.getNom()) + "," + 
+                                        "PRENOM=" + parameter(obj.getPrenom()) + "," +
+                                        "EMAIL=" + parameter(obj.getEmail()) + "," + 
+                                        "RUE=" + parameter(obj.getRue()) + "," +
+                                        "LOCALITE=" + parameter(obj.getLocalite()) + "," + 
+                                        "COMPTE=" + parameter(obj.getNom()) + "," +
+                                        "MOT_DE_PASSE=" + parameter(obj.getMot_de_passe()) + "," + 
+                                        "URL_PHOTO=" + parameter(obj.getUrl_photo()) + "," + 
+                                        "NUMERO_TELEPHONE=" + parameter(obj.getNumero_telephone()) + "," +
+                                        "NUMERO_RUE=" + parameter(obj.getNumero_rue()) + "," + 
+                                        "CODE_POSTAL=" + parameter(obj.getCode_postal()) + "," +
+                                        "DATE_NAISSANCE=" + parameter(obj.getDate_naissance()) + "," + 
+                                        "EST_MASCULIN=" + parameter(obj.isEst_masculin()) + "," +
+                                        "WHERE ID_PERSONNE=" + parameter(obj.getId_personne())+
+                                        "AND ID_ROLE=" + parameter(obj.getId_role()));
+            
+            prep.execute();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    
+    
     public static ArrayList findAllRoles(Connection con) {
         
         ArrayList L = new ArrayList();
