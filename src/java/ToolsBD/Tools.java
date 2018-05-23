@@ -16,8 +16,11 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
-public class Toolsbd {
+/**
+ *
+ * @author kemin
+ */
+public final class Tools {
     
     
     public static void updateUtilisateur(Connection con, Utilisateur obj) {
@@ -47,7 +50,7 @@ public class Toolsbd {
             prep.executeUpdate();
             
         } catch (SQLException ex) {
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -65,7 +68,7 @@ public class Toolsbd {
             prep.executeUpdate();
             
         } catch (SQLException ex) {
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -83,7 +86,7 @@ public class Toolsbd {
             prep.executeUpdate();
             
         } catch (SQLException ex) {
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -103,7 +106,7 @@ public class Toolsbd {
             prep.executeUpdate();
             
         } catch (SQLException ex) {
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -121,7 +124,7 @@ public class Toolsbd {
             prep.execute();
             
         } catch (SQLException ex) {
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -139,11 +142,10 @@ public class Toolsbd {
             prep.execute();
             
         } catch (SQLException ex) {
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
+   
     public static void storeAutorisation (Connection con, Autorisation obj) {
         
         try {
@@ -160,7 +162,7 @@ public class Toolsbd {
             prep.execute();
             
         } catch (SQLException ex) {
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -191,13 +193,10 @@ public class Toolsbd {
             prep.execute();
             
         } catch (SQLException ex) {
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
-    
-    
+  
     public static ArrayList findAllRoles(Connection con) {
         
         ArrayList L = new ArrayList();
@@ -223,7 +222,7 @@ public class Toolsbd {
             
         } catch (SQLException ex) {
             System.out.println("erreur connexion!!!!!");
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return L;
@@ -254,7 +253,7 @@ public class Toolsbd {
             
         } catch (SQLException ex) {
             System.out.println("erreur connexion!!!!!");
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return L;
@@ -288,7 +287,7 @@ public class Toolsbd {
             
         } catch (SQLException ex) {
             System.out.println("erreur connexion!!!!!");
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return L;
@@ -332,7 +331,7 @@ public class Toolsbd {
             
         } catch (SQLException ex) {
             System.out.println("erreur connexion!!!!!");
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return L;
@@ -381,7 +380,7 @@ public class Toolsbd {
             result = prep.executeUpdate();
             
         } catch (SQLException ex) {
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return result != 0; 
@@ -404,7 +403,7 @@ public class Toolsbd {
             result = prep.executeUpdate();
             
         } catch (SQLException ex) {
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return result != 0; 
@@ -427,7 +426,7 @@ public class Toolsbd {
             result = prep.executeUpdate();
             
         } catch (SQLException ex) {
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return result != 0; 
@@ -452,7 +451,7 @@ public class Toolsbd {
             result = prep.executeUpdate();
             
         } catch (SQLException ex) {
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return result != 0; 
@@ -475,7 +474,7 @@ public class Toolsbd {
             result = prep.executeUpdate();
             
         } catch (SQLException ex) {
-            Logger.getLogger(Toolsbd.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return result != 0; 
