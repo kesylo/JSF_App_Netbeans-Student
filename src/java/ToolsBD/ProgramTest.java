@@ -14,10 +14,6 @@ public class ProgramTest {
     @Resource(name = "ds")
     private static DataSource ds;
     
-    
-    
-    
-    
     private static Connection con = null;
     
     @PostConstruct

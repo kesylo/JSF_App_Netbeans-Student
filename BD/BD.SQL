@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS MLR4;
+DROP DATABASE IF EXISTS student_mgt_bd;
 
-CREATE DATABASE IF NOT EXISTS MLR4;
-USE MLR4;
+CREATE DATABASE IF NOT EXISTS student_mgt_bd;
+USE student_mgt_bd;
 # -----------------------------------------------------------------------------
 #       TABLE : UTILISATEUR
 # -----------------------------------------------------------------------------
