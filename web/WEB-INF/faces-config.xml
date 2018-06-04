@@ -3,5 +3,28 @@
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-
+    
+    
+    <navigation-rule>
+        <from-view-id>/views/authentification.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>acceuil</from-outcome>
+            <to-view-id>/views/acceuil.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/views/acceuil.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>none</from-outcome>
+            <to-view-id>/views/authentification.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <managed-bean>
+        <managed-bean-name>beanLogin</managed-bean-name>
+        <managed-bean-class>managedBeanPackage.beanLogin</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
 </faces-config> 

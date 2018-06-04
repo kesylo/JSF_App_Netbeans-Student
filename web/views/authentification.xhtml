@@ -13,66 +13,112 @@
         
         <div class="row">
 
-            <div class="col-md-4 col-md-offset-4">
+            <div class="col-sm-2 col-md-3 col-xl-4 
+                        d-none d-sm-block d-xl-block"></div>
+            
+            <div class="col-12 col-sm-8 col-md-6 col-xl-4 
+                        animated fadeInDown delay-006">
 
                 <div class="row">
-                    <div class="hidden-xs hidden-sm" style="cursor:pointer; padding-bottom:10px;">
-                        <center>
-                            <img src='' style="height: 70px;" class="img-responsive" />
-                        </center>
+                    <div class="d-none d-sm-none d-xl-block
+                                mx-auto" 
+                        style="cursor:pointer; padding-bottom:10px;">
+                        <img src='resources/images/png/logo.png' style="height: 70px;" class="img-responsive" />
                     </div>
-                    <div class="col-md-12 text-center">
-                        <p class="lead">
-                            Se connecter à l'application
+                    <div class="col-12 text-center">
+                        <p class="lead" >
+                            
+                            <font color="white">Se connecter à l'application</font>
                         </p>
                     </div>
                 </div>
 
-                <div class="login-panel panel panel-default">
+                <div class="login-card card card-default">
 
-                    <div class="panel-body">
-                        <form role="form" id="auth_form" name="auth_form">
+                    <div class="card-body">
+                        
+                        <h:form>
+                            
+                            <p:growl id="growl" showDetail="true" sticky="true" life="5000" />
+                            
                             <fieldset>
-                                <!-- Hiddent -->
-                                <input name="password" id="password" type="hidden" />
-                                <!-- ./Hiddent -->
+                                
                                 <div class="form-group">
-                                    <label style="font-weight: bold;" for="login">Compte <small class="text-red">*</small>:</label>
-                                    <input class="form-control" placeholder="Compte..." name="login" id="login" type="text" required='' autofocus='' />
-                                </div>
-                                <div class="form-group">
-                                    <label style="font-weight: bold;" for="password">Mot de passe <small class="text-red">*</small>:</label>
-                                    <div class="pull-right">
-                                        <a href="#">
-                                            <i class="fa fa-question-circle"></i> Oublié ?
-                                        </a>
+                                    <label style="font-weight: bold;" for="identifiant">Identifiant : <small class="text-red">*</small></label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="background-color: #16579a" id="compte-addon">
+                                                <i class="fa fa-user" style="color: white"></i>
+                                            </span>
+                                        </div>
+                                        <p:inputText class="form-control" placeholder="Identifiant..." 
+                                                     value="" />
                                     </div>
-                                    <button type="button" id="password_label" class="btn btn-block btn-default btn-flat disabled text-left">
-                                        Mot de passe
-                                    </button>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label style="font-weight: bold;" for="mot_de_passe">Mot de passe : <small class="text-red">*</small></label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" style="background-color: #16579a" id="mot_de_passe-addon">
+                                                <i class="fa fa-unlock-alt" style="color: white"></i>
+                                            </span>
+                                        </div>
+                                        <p:password class="form-control" placeholder="Mot de passe..." 
+                                               value="" />
+                                    </div>
                                 </div>
 
+                                <!--
                                 <div>
                                     <label>
                                         <input name="remember" id="remember" type="checkbox" class="flat-red" /> Se souvenir de moi
                                     </label>
                                 </div>
+                                -->
+                                <div class="pt-3"></div>
+                                <div align="center">
+                                    
+                                <p:commandButton 
+                                    type="button"
+                                    update="growl"
+                                    actionListener="#{beanLogin.loginProcess}"
+                                    value="Se connecter" 
+                                />
+                                </div>
+                                
+                                
+                                <!--
                                 <button id="bt_submit" type="submit" class="btn btn-lg btn-success btn-block">
                                     <i class="fa fa-check"></i> Se connecter
                                 </button>
+                                -->
+                                
                             </fieldset>
-                        </form>
+                            
+                        </h:form>
+                        
                     </div>
 
                 </div>
 
-                <div class="well well-sm text-center">
-                    Pas de compte ? <a href="#"><i class="fa fa-hand-o-right"></i> Obtenir en un</a>
+                <div class="pt-3"></div>
+                
+                <div class="card bg-light">
+                    <div class="card-body text-center">
+                        Pas de compte ? 
+                        <a href="#">
+                            <i class="fa fa-hand-o-right"></i> 
+                            Contactez nous.
+                        </a>
+                    </div>
                 </div>
+                
+                <div class="pt-3"></div>
 
-                <div class="col-lg-12 text-center">
-                    <span id="dnn_dnnCOPYRIGHT_lblCopyright" class="footer">
-                        Copyright 2018 by <b>KEMING Loic</b> <small>V 30052018</small>
+                <div class="col-xl-12 text-center">
+                    <span>
+                        <font color="white">Copyright 2018 by <b>KEMING Loic</b> <small>V 03062018</small></font>
                     </span>
                 </div>
 

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scene Scope="Project" version="2">
     <Scope Scope="Faces Configuration Only"/>
-    <Scope Scope="Project"/>
+    <Scope Scope="Project">
+        <Node id="views/acceuil.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="views/shared/_layout_acceuil.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="views/shared/_layout_authentification.xhtml" x="6" y="21" zoom="true"/>
+        <Node id="views/authentification.xhtml" x="51" y="344" zoom="false"/>
+    </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

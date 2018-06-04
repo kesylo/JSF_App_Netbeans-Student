@@ -1,13 +1,32 @@
 ﻿
 /* Importation des fichiers */
-@import url('../../Plugins/glyphicon/css/ds.glyphicon.style.css');
-@import url('../../Plugins/parsley/ds.parsley.css');
-@import url('../../Plugins/animate.css/ds.animate.css');
+@import url('../plugins/glyphicon/css/ds.glyphicon.style.css');
+@import url('../plugins/parsley/ds.parsley.css');
+@import url('../plugins/animate.css/ds.animate.css');
 
-body {
+/* Création d'une nouvelle police dans l'application' */
+@font-face{
+    font-family:'TitilliumWeb';
+    src: url(../fonts/TitilliumWeb-Regular.ttf);
+    font-weight:normal;
+    font-style:normal;
+}
+
+.body-authentification {
     font-family: TitilliumWeb; 
     font-weight:normal; 
     font-style:normal;
+    background: url(../images/jpg/bg_grey.jpg);
+    /*
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    min-height: 100%;
+    */
+    -webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;         /* Generic*/
 }
 
 footer {
