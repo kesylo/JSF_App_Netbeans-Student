@@ -5,9 +5,27 @@ public class Autorisation {
     
     private int id_role, id_menu;
     private boolean ajouter, modifier, supprimer;
+    private Role role;
+    private Menu menu;
 
     public int getId_role() {
         return id_role;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     public void setId_role(int id_role) {

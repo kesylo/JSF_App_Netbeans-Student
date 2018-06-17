@@ -39,11 +39,11 @@
                         
                         <h:form>
                             
-                            <p:growl id="growl" showDetail="true" sticky="true" life="5000" />
+                            <p:growl id="growl" showDetail="true" sticky="true"  />
                             
                             <fieldset>
                                 
-                                <div class="form-group">
+                                 <div class="form-group">
                                     <label style="font-weight: bold;" for="identifiant">Identifiant : <small class="text-red">*</small></label>
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
@@ -52,7 +52,7 @@
                                             </span>
                                         </div>
                                         <p:inputText class="form-control" placeholder="Identifiant..." 
-                                                     value="" />
+                                                     value="#{loginBean.compte}" />
                                     </div>
                                 </div>
                                 
@@ -65,7 +65,7 @@
                                             </span>
                                         </div>
                                         <p:password class="form-control" placeholder="Mot de passe..." 
-                                               value="" />
+                                                    value="#{loginBean.mot_de_passe}" />
                                     </div>
                                 </div>
 
@@ -78,21 +78,13 @@
                                 -->
                                 <div class="pt-3"></div>
                                 <div align="center">
-                                    
-                                <p:commandButton 
-                                    type="button"
-                                    update="growl"
-                                    actionListener="#{beanLogin.loginProcess}"
-                                    value="Se connecter" 
-                                />
+                                    <p:commandButton 
+                                        value="Se connecter" 
+                                        icon="ui-icon-extlink" 
+                                        actionListener="#{loginBean.authentification()}" 
+                                        update="growl" 
+                                    />
                                 </div>
-                                
-                                
-                                <!--
-                                <button id="bt_submit" type="submit" class="btn btn-lg btn-success btn-block">
-                                    <i class="fa fa-check"></i> Se connecter
-                                </button>
-                                -->
                                 
                             </fieldset>
                             

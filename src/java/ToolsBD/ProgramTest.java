@@ -36,7 +36,7 @@ public class ProgramTest {
         
         init();
         
-        ArrayList value = Tools.findAllAutorisations(con);
+       // ArrayList value = Tools.findAllAutorisations(con);
     }
 
     

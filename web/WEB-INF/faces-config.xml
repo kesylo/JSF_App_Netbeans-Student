@@ -3,28 +3,47 @@
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-    
-    
-    <navigation-rule>
-        <from-view-id>/views/authentification.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>acceuil</from-outcome>
-            <to-view-id>/views/acceuil.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    
-    <navigation-rule>
-        <from-view-id>/views/acceuil.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>none</from-outcome>
-            <to-view-id>/views/authentification.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-    
     <managed-bean>
-        <managed-bean-name>beanLogin</managed-bean-name>
-        <managed-bean-class>managedBeanPackage.beanLogin</managed-bean-class>
+        <managed-bean-name>loginBean</managed-bean-name>
+        <managed-bean-class>managedBeanPackage.LoginBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
-    
-</faces-config> 
+    <navigation-rule>
+        <from-view-id>/authentification.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>acceuil</from-outcome>
+            <to-view-id>/acceuil.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/acceuil.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>authentification</from-outcome>
+            <to-view-id>/authentification.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <managed-bean>
+        <managed-bean-name>viewModel</managed-bean-name>
+        <managed-bean-class>beanPackage.ViewModel</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>acceuilBean</managed-bean-name>
+        <managed-bean-class>managedBeanPackage.AcceuilBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>appBean</managed-bean-name>
+        <managed-bean-class>managedBeanPackage.AppBean</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>menuBean</managed-bean-name>
+        <managed-bean-class>managedBeanPackage.MenuBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+        <managed-property>
+            <property-name>utilisateur</property-name>
+            <value>#{loginBean.utilisateur}</value>
+        </managed-property>
+    </managed-bean>
+</faces-config>

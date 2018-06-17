@@ -7,7 +7,7 @@
     
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>excite-bike</param-value>
+        <param-value>delta</param-value>
     </context-param>
     
     <servlet>
@@ -17,7 +17,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>/faces/*</url-pattern>
+        <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -25,6 +25,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/views/authentification.xhtml</welcome-file>
+        <welcome-file>authentification.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>

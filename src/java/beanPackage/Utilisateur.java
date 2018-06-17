@@ -2,6 +2,7 @@
 package beanPackage;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 
 public class Utilisateur {
@@ -10,7 +11,29 @@ public class Utilisateur {
     private int id_personne, id_role, numero_telephone, numero_rue, code_postal;
     private Date date_naissance;
     private boolean est_masculin;
+    private Role role;
+    private ArrayList<Autorisation> autorisations;
+    
 
+    public Role getRole() {
+        return role;
+    }
+
+    public ArrayList<Autorisation> getAutorisations() {
+        return autorisations;
+    }
+
+    public void setAutorisations(ArrayList<Autorisation> autorisations) {
+        this.autorisations = autorisations;
+    }
+
+
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+    
+    
     public String getMatricule() {
         return matricule;
     }

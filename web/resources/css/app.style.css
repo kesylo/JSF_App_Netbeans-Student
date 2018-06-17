@@ -29,6 +29,23 @@
     background-size: cover;         /* Generic*/
 }
 
+.body-acceuil {
+    font-family: TitilliumWeb; 
+    font-weight:normal; 
+    font-style:normal;
+    /*background: url(../images/jpg/bg_grey.jpg);*/
+    /*
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    min-height: 100%;
+    */
+    -webkit-background-size: cover; /* For WebKit*/
+    -moz-background-size: cover;    /* Mozilla*/
+    -o-background-size: cover;      /* Opera*/
+    background-size: cover;         /* Generic*/
+}
+
 footer {
     /*background-color: #717070;*/ 
     color: #FFFFFF; 

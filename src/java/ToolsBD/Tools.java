@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ToolsBD;
 
 import beanPackage.*;
@@ -11,15 +7,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ws.rs.client.Client;
 
-/**
- *
- * @author kemin
- */
+
+
 public final class Tools {
     
     
@@ -228,6 +222,205 @@ public final class Tools {
         return L;
     }
     
+    
+    public static ArrayList<Autorisation> findAutorisations (Connection con, int id_role) {
+        
+
+        ArrayList<Autorisation> L = new ArrayList();
+        
+        try {
+            
+            Statement stmt = con.createStatement();
+            
+            ResultSet rs = stmt.executeQuery(
+                                "SELECT * " + 
+                                "FROM APP.AUTORISATION " + 
+                                "WHERE ID_ROLE=" + id_role);
+            
+            while (rs.next()) {
+                
+                Autorisation p = new Autorisation();
+                
+                p.setId_role(rs.getInt("ID_ROLE"));
+                p.setId_menu(rs.getInt("ID_MENU"));
+                p.setAjouter(rs.getBoolean("AJOUTER"));
+                p.setModifier(rs.getBoolean("MODIFIER"));
+                p.setSupprimer(rs.getBoolean("SUPPRIMER"));
+                p.setRole(Tools.findRole(con, rs.getInt("ID_ROLE")));
+                p.setMenu(Tools.findMenu(con, rs.getInt("ID_MENU")));
+                
+                L.add(p);
+                
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("erreur connexion!!!!!");
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return L;
+    }
+    
+    public static Utilisateur findUser(Connection con, String Compte) {
+        
+        ArrayList L = new ArrayList();
+        
+        try {
+            
+            Statement stmt = con.createStatement();
+            
+            ResultSet rs = stmt.executeQuery(
+                                "SELECT * " + 
+                                "FROM APP.UTILISATEUR " + 
+                                "WHERE COMPTE=" + parameter(Compte));
+            
+            while (rs.next()) {
+                
+                Utilisateur p = new Utilisateur();
+                
+                p.setId_role(rs.getInt("ID_ROLE"));
+                p.setId_personne(rs.getInt("ID_UTILISATEUR"));
+                p.setCode_postal(rs.getInt("CODE_POSTAL"));
+                p.setCompte(rs.getString("COMPTE"));
+                p.setDate_naissance(rs.getDate("DATE_NAISSANCE"));
+                p.setEmail(rs.getString("EMAIL"));
+                //p.setEst_masculin(rs.getBoolean("EST_MASCULIN"));
+                p.setLocalite(rs.getString("LOCALITE"));
+                p.setMatricule(rs.getString("MATRICULE"));
+                p.setMot_de_passe(rs.getString("MOT_DE_PASSE"));
+                p.setNom(rs.getString("NOM"));
+                p.setNumero_rue(rs.getInt("NUMERO_RUE"));
+                p.setNumero_telephone(rs.getInt("NUMERO_TELEPHONE"));
+                p.setPrenom(rs.getString("PRENOM"));
+                p.setRue(rs.getString("RUE"));
+                p.setUrl_photo(rs.getString("URL_PHOTO"));
+                
+                p.setRole(findRole(con, p.getId_role()));
+                p.setAutorisations(findAutorisations(con,p.getId_role()));
+                
+                L.add(p);
+                
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("erreur connexion!!!!!");
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        return (L.size() > 0) ? (Utilisateur)L.get(0) 
+                              : null;
+    }
+    
+    
+    public static Role findRole(Connection con, int id_role) {
+        
+        ArrayList L = new ArrayList();
+        
+        try {
+            
+            Statement stmt = con.createStatement();
+            
+            ResultSet rs = stmt.executeQuery(
+                                "SELECT * " + 
+                                "FROM APP.ROLE " + 
+                                "WHERE ID_ROLE=" + id_role);
+            
+            while (rs.next()) {
+                
+                Role p = new Role();
+                
+                p.setId_role(rs.getInt("ID_ROLE"));
+                p.setCode(rs.getString("CODE_ROLE"));
+                p.setIntitule(rs.getString("INTITULLE_ROLE"));
+                
+                
+                L.add(p);
+                
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("erreur connexion!!!!!");
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return (L.size() > 0) ? (Role)L.get(0) 
+                              : null;
+    }
+    
+    
+    public static Menu findMenu(Connection con, int id_menu) {
+        
+        ArrayList L = new ArrayList();
+        
+        try {
+            
+            Statement stmt = con.createStatement();
+            
+            ResultSet rs = stmt.executeQuery(
+                                "SELECT * " + 
+                                "FROM APP.MENU " + 
+                                "WHERE ID_MENU=" + id_menu);
+            
+            while (rs.next()) {
+                
+                Menu p = new Menu();
+                
+                p.setId_menu(rs.getInt("ID_MENU"));
+                p.setId_groupe_menu(rs.getInt("ID_GROUPE_MENU"));
+                p.setCode(rs.getString("CODE_MENU"));
+                p.setLibelle(rs.getString("LIBELLE_MENU"));
+                p.setPage(rs.getString("PAGE"));
+                p.setGroupe_menu(Tools.findGroupe_Menu(con, rs.getInt("ID_GROUPE_MENU")));
+                
+                L.add(p);
+                
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("erreur connexion!!!!!");
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return (L.size() > 0) ? (Menu)L.get(0) 
+                              : null;
+    }
+    
+    public static Groupe_menu findGroupe_Menu(Connection con, int id_groupe_menu) {
+        
+        ArrayList L = new ArrayList();
+        
+        try {
+            
+            Statement stmt = con.createStatement();
+            
+            ResultSet rs = stmt.executeQuery(
+                                "SELECT * " + 
+                                "FROM APP.GROUPE_MENU " + 
+                                "WHERE ID_GROUPE_MENU=" + id_groupe_menu);
+            
+            while (rs.next()) {
+                
+                Groupe_menu p = new Groupe_menu();
+                
+                p.setId_groupe_menu(rs.getInt("ID_GROUPE_MENU"));
+                p.setCode_groupe_menu(rs.getString("CODE_GROUPE_MENU"));
+                p.setLibelle_groupe_menu(rs.getString("LIBELLE_GROUPE_MENU"));
+                
+                
+                L.add(p);
+                
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println("erreur connexion!!!!!");
+            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return (L.size() > 0) ? (Groupe_menu)L.get(0) 
+                              : null;
+    }
+    
     public static ArrayList findAllMenus(Connection con) {
         
         ArrayList L = new ArrayList();
@@ -259,39 +452,7 @@ public final class Tools {
         return L;
     }
     
-    public static ArrayList findAllAutorisations(Connection con) {
-        
-        ArrayList L = new ArrayList();
-        
-        try {
-            
-            PreparedStatement prep = con.prepareStatement(
-                                        "SELECT * " + 
-                                        "FROM Autorisation");
-            
-            ResultSet rs = prep.executeQuery();
-            
-            while (rs.next()) {
-                
-                Autorisation obj = new Autorisation();
-                
-                obj.setId_role(rs.getInt("ID_ROLE"));
-                obj.setId_menu(rs.getInt("ID_MENU"));
-                obj.setAjouter(rs.getBoolean("AJOUTER"));
-                obj.setAjouter(rs.getBoolean("MODIFIER"));
-                obj.setAjouter(rs.getBoolean("SUPPRIMER"));
-                
-                L.add(obj);
-                
-            }
-            
-        } catch (SQLException ex) {
-            System.out.println("erreur connexion!!!!!");
-            Logger.getLogger(Tools.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return L;
-    }
+    
     
     public static ArrayList findAllUtilisateurs(Connection con) {
         
@@ -344,15 +505,23 @@ public final class Tools {
         
         try 
         {
-            stmt = con.createStatement();
+//            stmt = con.createStatement();
+//            
+//            ResultSet rs = stmt.executeQuery(
+//                "SELECT * "         +
+//                "FROM Utilisateur " + 
+//                "WHERE "            + 
+//                "COMPTE="           + parameter(compte) + " " + 
+//                "AND "              + 
+//                "MOT_DE_PASSE="     + parameter(mot_de_passe));
             
-            ResultSet rs = stmt.executeQuery(
-                "SELECT * "         +
-                "FROM Utilisateur " + 
-                "WHERE "            + 
-                "COMPTE="           + parameter(compte) + " " + 
-                "AND "              + 
-                "MOT_DE_PASSE="     + parameter(mot_de_passe));
+            
+            stmt = con.createStatement();
+            compte = "'" + compte + "'";
+            mot_de_passe = "'" + mot_de_passe + "'";
+            ResultSet rs = stmt.executeQuery("Select * "
+                    + "from APP.UTILISATEUR where COMPTE=" + compte
+                    + " and MOT_DE_PASSE=" + mot_de_passe);
             
             ok = rs.next();
             
@@ -486,6 +655,49 @@ public final class Tools {
         return 
             "'" + value.toString() + "'";
         
+    }
+
+    public static Utilisateur findUtilisateur(Connection con, String compte) {
+        
+        Utilisateur p = new Utilisateur();
+        
+        compte = "'" + compte + "'";
+        
+        PreparedStatement prep;
+        
+        try {
+            prep = con.prepareStatement("SELECT * FROM"
+                    + " UTILISATEUR WHERE COMPTE=?");
+            
+            prep.setString(1, compte);
+            
+            ResultSet rs = prep.executeQuery();
+            
+            if (!rs.next()) {
+                return null;
+            }
+            
+            p.setId_personne(rs.getInt("ID_UTILISATEUR"));
+            p.setCode_postal(rs.getInt("CODE_POSTAL"));
+            p.setCompte(rs.getString("COMPTE"));
+            p.setDate_naissance(rs.getDate("DATE_NAISSANCE"));
+            p.setEmail(rs.getString("EMAIL"));
+            //p.setEst_masculin(rs.getBoolean("EST_MASCULIN"));
+            p.setLocalite(rs.getString("LOCALITE"));
+            p.setMatricule(rs.getString("MATRICULE"));
+            p.setMot_de_passe(rs.getString("MOT_DE_PASSE"));
+            p.setNom(rs.getString("NOM"));
+            p.setNumero_rue(rs.getInt("NUMERO_RUE"));
+            p.setNumero_telephone(rs.getInt("NUMERO_TELEPHONE"));
+            p.setPrenom(rs.getString("PRENOM"));
+            p.setRue(rs.getString("RUE"));
+            p.setUrl_photo(rs.getString("URL_PHOTO"));
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return p;
     }
     
 }
